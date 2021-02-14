@@ -8,30 +8,50 @@ import {
 } from "../../StyleConstants";
 
 export const CardContainer = styled.div`
-  padding: 24px 0 16px 0;
-  display: flex;
-  justify-content: flex-start;
+  padding: 32px 0 16px 0;
+  display: grid;
+  grid-template-columns: 88px auto;
 `;
 
-export const AvatarContainer = styled.div`
-  padding-left: 8px;
-  margin-right: 32px;
+export const AvatarAndLikes = styled.div`
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const AvatarImage = styled.div`
-  background-color: white;
+  background-color: ${disabledIconGray};
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 50%;
-  height: 56px;
-  width: 56px;
+  height: 64px;
+  width: 64px;
+  margin-bottom: 26px;
 `;
 
-export const TopBottomContainer = styled.div`
+export const ThumbsUpAndDown = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 64px;
+
+  img {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    transition: 0.2s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+`;
+
+export const QuestionAndSocial = styled.div`
+  grid-column: 2;
   display: flex;
   flex-direction: column;
-  width: 100%;
 
   img {
     transition: 0.2s;
@@ -42,16 +62,9 @@ export const TopBottomContainer = styled.div`
   }
 `;
 
-export const QuestionContainer = styled.div`
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 export const Question = styled.h2`
   margin: unset;
+  margin-bottom: 8px;
   font-family: "Inter SemiBold";
   font-style: normal;
   font-weight: 600;
@@ -60,34 +73,12 @@ export const Question = styled.h2`
   color: ${gray2};
 `;
 
-export const CommentIconContainer = styled.div`
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Poppins SemiBold";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 24px;
-  margin-right: 24px;
-
-  color: ${disabledIconGray};
-
-  img {
-    height: 20px;
-    width: 20px;
-    margin-right: 4px;
-  }
-`;
-
 export const Details = styled.div`
   cursor: pointer;
-  max-width: 448px;
-  height: 24px;
+  width: fit-content;
+  height: 48px;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
   font-family: "Inter";
   font-style: normal;
   font-weight: normal;
@@ -104,32 +95,23 @@ export const Details = styled.div`
   }
 `;
 
-export const UserInteractionContainer = styled.div`
+export const CourseCommentAndStar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const LikeAndCourse = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+export const UserAndCourse = styled.div`
+  width: fit-content;
 
-  img {
-    cursor: pointer;
-    height: 20px;
-    width: 20px;
-    margin-right: 20px;
-  }
-
-  span {
+  p {
+    margin: unset;
     font-family: "Inter";
     font-style: normal;
     font-weight: normal;
     font-size: 13px;
     line-height: 24px;
     color: ${gray3};
-    margin-left: 14px;
 
     &.from-user {
       color: ${lucaDarkBlue};
@@ -152,16 +134,31 @@ export const LikeAndCourse = styled.div`
   }
 `;
 
-export const ShareAndFollow = styled.div`
+export const CommentsAndStars = styled.div`
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
+  font-family: "Poppins SemiBold";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  color: ${disabledIconGray};
 
   img {
-    cursor: pointer;
-    height: 24px;
-    width: 24px;
-    transition: 0.2s;
-    margin-right: 24px;
+    height: 20px;
+    width: 20px;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  .message {
+    margin-right: 4px;
+  }
+
+  .star {
+    margin-left: 16px;
   }
 `;

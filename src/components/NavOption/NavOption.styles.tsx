@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { disabledIconGray, medBlueBg } from "../../StyleConstants";
+import { disabledIconGray, lucaBlue, medGrayBg } from "../../StyleConstants";
 
 export const NavOptionContainer = styled.div`
   display: flex;
@@ -12,11 +12,11 @@ export const NavOptionContainer = styled.div`
   border-radius: 48px;
 
   &.active {
-    background-color: ${medBlueBg};
+    background-color: ${medGrayBg};
   }
 
   &:hover {
-    background-color: ${medBlueBg};
+    background-color: ${medGrayBg};
   }
 
   img {

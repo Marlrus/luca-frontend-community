@@ -39,3 +39,4 @@ export const disabledIconGray = "#9A9CB5";
 export const gray1 = "#333333";
 export const gray2 = "#4F4F4F";
 export const gray3 = "#828282";
+export const gray4 = "#DBDBDB";

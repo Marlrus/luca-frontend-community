@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { size, white, black } from "../../StyleConstants";
+import { size, lucaBlue, white, black } from "../../StyleConstants";
 
 export const SidebarDesktop = styled.div`
   grid-column: 1/2;
@@ -63,4 +63,30 @@ export const BlackBar = styled.div`
   height: 5px;
   background-color: ${black};
   border-radius: 10px;
+`;
+
+export const ReferenceContainer = styled.div`
+  position: relative;
+  max-width: 704px;
+  margin: 0 auto;
+`;
+
+export const NewQuestionPencil = styled.div`
+  position: absolute;
+  top: -80px;
+  right: 16px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0px 2px 0px #212b80;
+  background-color: ${lucaBlue};
+  margin-bottom: 24px;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
 `;

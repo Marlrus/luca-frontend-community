@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import {
   fetchQuestionAsync,
@@ -6,8 +6,10 @@ import {
 } from "../../redux/actions/question.actions";
 import CommentHeader from "../CommentHeader/CommentHeader.component";
 import QuestionCard from "../QuestionCard/QuestionCard.component";
+import QuestionCardCompact from "../QuestionCardCompact/QuestionCardCompact.component";
 import ResponsiveContentGrid from "../ResponsiveContentGrid/ResponsiveContentGrid.component";
 import Spinner from "../Spinner/Spinner.component";
+import { useMediaQuery } from "react-responsive";
 
 // Types
 import { ThunkDispatch } from "redux-thunk";
@@ -17,10 +19,13 @@ import {
   QuestionActions,
 } from "../../redux/types/question.types";
 
+import { minWidthQueries } from "../../StyleConstants";
 import {
   SectionContainer,
   ScrollContentContainer,
   HeaderContainer,
+  NoResultsLeft,
+  QuestionSeparator,
 } from "./CommentSection.styles";
 
 const CommentSection: React.FC<CommentSectionProps> = ({
@@ -29,6 +34,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
   question,
   user,
 }) => {
+  const isDesktop = useMediaQuery(minWidthQueries.desktop);
   const { fetching } = question;
 
   useEffect(() => {
@@ -37,7 +43,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
     return () => {
       clearQuestionsState();
     };
-  }, [fetchQuestionAsync]);
+  }, [fetchQuestionAsync, clearQuestionsState]);
 
   const handleScroll = (e: any) => {
     const { scrollHeight, scrollTop, clientHeight } = e.target;
@@ -47,21 +53,40 @@ const CommentSection: React.FC<CommentSectionProps> = ({
     if (bottom) fetchQuestionAsync();
   };
 
+  const noQuestionsLeft = question.pagination.hasNextPage === false;
+
   return (
     <SectionContainer>
       <ScrollContentContainer onScroll={handleScroll}>
         <ResponsiveContentGrid>
           <HeaderContainer>
             <CommentHeader>
-              {question.questions.map((question) => (
-                <QuestionCard
-                  commentNumber={Math.round(Math.random() * 300)}
-                  key={question._id}
-                  {...question}
-                  fromSameUser={question.user_id === user._id}
-                />
-              ))}
+              {isDesktop &&
+                question.questions.map((question) => (
+                  <Fragment key={`${question._id}${Math.random()}`}>
+                    <QuestionCard
+                      commentNumber={Math.round(Math.random() * 300)}
+                      {...question}
+                      fromSameUser={question.user_id === user._id}
+                    />
+                    <QuestionSeparator />
+                  </Fragment>
+                ))}
+              {!isDesktop &&
+                question.questions.map((question) => (
+                  <Fragment key={`${question._id}${Math.random()}`}>
+                    <QuestionSeparator />
+                    <QuestionCardCompact
+                      commentNumber={Math.round(Math.random() * 300)}
+                      {...question}
+                      fromSameUser={question.user_id === user._id}
+                    />
+                  </Fragment>
+                ))}
               {fetching && <Spinner />}
+              {noQuestionsLeft && (
+                <NoResultsLeft>No quedan mas preguntas.</NoResultsLeft>
+              )}
             </CommentHeader>
           </HeaderContainer>
         </ResponsiveContentGrid>

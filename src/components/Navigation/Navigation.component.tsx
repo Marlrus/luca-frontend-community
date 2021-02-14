@@ -1,6 +1,6 @@
 import React from "react";
 import NavOption from "../NavOption/NavOption.component";
-import { logos } from "../../IconsAndLogos";
+import { logos, icons } from "../../IconsAndLogos";
 import { NavDesktopOptions, NavMobileOptions } from "./Navigation.utils";
 import { useMediaQuery } from "react-responsive";
 
@@ -14,6 +14,8 @@ import {
   NavIconsContainer,
   IconContainer,
   BlackBar,
+  NewQuestionPencil,
+  ReferenceContainer,
 } from "./Navigation.styles";
 
 const Navigation: React.FC = () => {
@@ -36,6 +38,11 @@ const Navigation: React.FC = () => {
       )}
       {!isDesktop && (
         <BottomNav>
+          <ReferenceContainer>
+            <NewQuestionPencil>
+              <img src={icons.PencilIcon} alt="new question pencil" />
+            </NewQuestionPencil>
+          </ReferenceContainer>
           <NavIconsContainer>
             {NavMobileOptions.map((props) => (
               <IconContainer key={props.icon}>
