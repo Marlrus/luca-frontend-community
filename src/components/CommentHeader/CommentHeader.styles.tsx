@@ -1,9 +1,19 @@
 import styled from "styled-components";
-import { gray1 } from "../../StyleConstants";
+import { gray1, white, size } from "../../StyleConstants";
 
 export const CommentHeaderContainer = styled.div`
-  padding-top: 40px;
-  background-color: slateGrey;
+  background-color: ${white};
+  padding: 40px 16px 0px 16px;
+
+  @media screen and (min-width: ${size.desktop}) {
+    background-color: unset;
+  }
+`;
+
+export const TopContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const Title = styled.h2`

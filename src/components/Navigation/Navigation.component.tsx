@@ -4,7 +4,7 @@ import { logos } from "../../IconsAndLogos";
 import { NavDesktopOptions, NavMobileOptions } from "./Navigation.utils";
 import { useMediaQuery } from "react-responsive";
 
-import { maxWidthQueries } from "../../StyleConstants";
+import { minWidthQueries } from "../../StyleConstants";
 import {
   SidebarDesktop,
   LogoContainer,
@@ -17,10 +17,10 @@ import {
 } from "./Navigation.styles";
 
 const Navigation: React.FC = () => {
-  const isTablet = useMediaQuery(maxWidthQueries.desktop);
+  const isDesktop = useMediaQuery(minWidthQueries.desktop);
   return (
     <>
-      {!isTablet && (
+      {isDesktop && (
         <SidebarDesktop>
           <LogoContainer>
             <img src={logos.LucaLogo} alt="Luca logo" />
@@ -34,7 +34,7 @@ const Navigation: React.FC = () => {
           </NavContainer>
         </SidebarDesktop>
       )}
-      {isTablet && (
+      {!isDesktop && (
         <BottomNav>
           <NavIconsContainer>
             {NavMobileOptions.map((props) => (

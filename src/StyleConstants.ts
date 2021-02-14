@@ -11,6 +11,11 @@ export const maxWidthQueries = {
   desktop: { query: `(max-width: ${size.desktop})` },
 };
 
+export const minWidthQueries = {
+  mobile: { query: `(min-width: ${size.mobile})` },
+  tablet: { query: `(min-width: ${size.tablet})` },
+  desktop: { query: `(min-width: ${size.desktop})` },
+};
 // Colors
 // Items
 export const lucaBlue = "#3843D0";

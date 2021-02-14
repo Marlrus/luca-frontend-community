@@ -1,9 +1,13 @@
 import styled from "styled-components";
-import { medGrayBg } from "../../StyleConstants";
+import { medGrayBg, white, size } from "../../StyleConstants";
 
 export const SectionContainer = styled.div`
-  background-color: ${medGrayBg};
+  background-color: ${white};
   width: 100%;
+
+  @media screen and (min-width: ${size.desktop}) {
+    background-color: ${medGrayBg};
+  }
 `;
 
 export const ScrollContentContainer = styled.div`
