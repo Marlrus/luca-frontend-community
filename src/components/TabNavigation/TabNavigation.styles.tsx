@@ -5,12 +5,19 @@ import {
   medBlueBg,
   gray1,
   white,
+  size,
+  medGrayBg,
 } from "../../StyleConstants";
 
 export const NavContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  background-color: ${white};
+
+  @media screen and (min-width: ${size.desktop}) {
+    background-color: ${medGrayBg};
+  }
 `;
 
 export const NavTab = styled.div`

@@ -20,6 +20,7 @@ import TextAreaLinesIcon from "./static/icons/TextCornerLines.svg";
 import CloseXIcon from "./static/icons/ic_close_32.svg";
 import MoreArrowDownIcon from "./static/icons/ic_chevronmore_16.svg";
 import PencilIcon from "./static/icons/ic_pencil_32.svg";
+import ShareIcon from "./static/icons/share-2.svg";
 
 export const logos = {
   LucaLogo,
@@ -47,4 +48,5 @@ export const icons = {
   CloseXIcon,
   MoreArrowDownIcon,
   PencilIcon,
+  ShareIcon,
 };

@@ -37,3 +37,5 @@ export const disabledIconGray = "#9A9CB5";
 
 // Fonts
 export const gray1 = "#333333";
+export const gray2 = "#4F4F4F";
+export const gray3 = "#828282";

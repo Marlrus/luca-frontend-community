@@ -3,8 +3,6 @@ import {
   lucaBlue,
   lucaDarkBlue,
   black,
-  disabledIconGray,
-  medBlueBg,
   gray1,
   white,
 } from "../../StyleConstants";
