@@ -28,6 +28,7 @@ export const lucaPink = "#FC9CFE";
 export const white = "#FFFFFF";
 export const black = "#000000";
 export const lightGrayBg = "#E5E5E5";
+export const secondaryGray = "#C6C7D4";
 export const medGrayBg = "#F1F2F8";
 export const medBlueBg = "#EDEEFF";
 

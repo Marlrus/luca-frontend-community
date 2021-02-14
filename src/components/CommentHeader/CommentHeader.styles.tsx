@@ -28,5 +28,5 @@ export const Title = styled.h2`
 export const NavContainer = styled.div`
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: -1px;
 `;
