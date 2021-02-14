@@ -1,5 +1,12 @@
 import styled from "styled-components";
-import { gray2, gray3, lucaBlue, disabledIconGray } from "../../StyleConstants";
+import {
+  gray2,
+  gray3,
+  lucaBlue,
+  lucaDarkBlue,
+  lucaYellow,
+  disabledIconGray,
+} from "../../StyleConstants";
 
 export const CardContainer = styled.div`
   padding: 24px 0 16px 0;
@@ -14,6 +21,9 @@ export const AvatarContainer = styled.div`
 
 export const AvatarImage = styled.div`
   background-color: white;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 50%;
   height: 56px;
   width: 56px;
@@ -72,19 +82,27 @@ export const CommentIconContainer = styled.div`
   }
 `;
 
-export const Description = styled.div`
+export const Details = styled.div`
+  cursor: pointer;
   max-width: 448px;
+  height: 24px;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
   font-family: "Inter";
   font-style: normal;
   font-weight: normal;
   font-size: 13px;
   line-height: 24px;
   margin-bottom: 16px;
+  transition: 0.5s;
 
-  color: ${gray3};
-  opacity: 0.7;
+  color: ${disabledIconGray};
+
+  &.expand {
+    white-space: unset;
+    height: fit-content;
+  }
 `;
 
 export const UserInteractionContainer = styled.div`
@@ -113,6 +131,10 @@ export const LikeAndCourse = styled.div`
     line-height: 24px;
     color: ${gray3};
     margin-left: 14px;
+
+    &.from-user {
+      color: ${lucaDarkBlue};
+    }
   }
 
   strong {

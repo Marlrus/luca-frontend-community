@@ -1,3 +1,7 @@
-import { rootReducer } from "./root-reducer";
+import { UserState } from "./types/user.types";
+import { QuestionState } from "./types/question.types";
 
-export type State = ReturnType<typeof rootReducer>;
+export interface State {
+  user: UserState;
+  question: QuestionState;
+}

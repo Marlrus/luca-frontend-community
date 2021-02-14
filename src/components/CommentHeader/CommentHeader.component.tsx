@@ -11,7 +11,7 @@ import {
   NavContainer,
 } from "./CommentHeader.styles";
 
-const CommentHeader: React.FC = () => {
+const CommentHeader: React.FC<React.ReactNode> = ({ children }) => {
   const isDesktop = useMediaQuery(minWidthQueries.desktop);
   return (
     <CommentHeaderContainer>
@@ -36,6 +36,7 @@ const CommentHeader: React.FC = () => {
           handleChange={(v) => console.log(v)}
         />
       </NavContainer>
+      {children}
     </CommentHeaderContainer>
   );
 };

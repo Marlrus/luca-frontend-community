@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { icons } from "../../IconsAndLogos";
 
+import { QuestionData } from "../../redux/types/question.types";
+
 import {
   CardContainer,
   AvatarContainer,
@@ -9,37 +11,61 @@ import {
   QuestionContainer,
   Question,
   CommentIconContainer,
-  Description,
+  Details,
   UserInteractionContainer,
   LikeAndCourse,
   ShareAndFollow,
 } from "./QuestionCard.styles";
 
-const QuestionCard: React.FC = () => {
+interface QuestionCardProps {
+  commentNumber?: number;
+  fromSameUser?: boolean;
+}
+
+const QuestionCard: React.FC<QuestionData & QuestionCardProps> = ({
+  username,
+  user_avatar,
+  course_name,
+  question,
+  details,
+  commentNumber = 0,
+  fromSameUser = false,
+}) => {
   const [active, setActive] = useState<boolean>(false);
+  const [expand, setExpand] = useState<boolean>(false);
+
+  const userName = fromSameUser ? "tuya" : username;
 
   return (
     <CardContainer>
       <AvatarContainer>
+        {/* Avatar service was suspended...
+      <AvatarImage style={{ backgroundImage: `url('${user_avatar}')` }} />
+    */}
         <AvatarImage />
       </AvatarContainer>
       <TopBottomContainer>
         <QuestionContainer>
-          <Question>¿Cuáles son los múltiplos del 7?</Question>
+          <Question>{question}</Question>
           <CommentIconContainer>
             <img src={icons.MessageCircleIcon} alt="question icon" />
-            72
+            {commentNumber}
           </CommentIconContainer>
         </QuestionContainer>
-        <Description>
-          TTNHNSETOUHNSOTEHUNSTOHENSUTHTNHNSETOUHNSOTEHUNSTOHENSUTHTNHNSETOUHNSOTEHUNSTOHENSUTHNHNSETOUHNSOTEHUNSTOHENSUTH
-        </Description>
+        <Details
+          onClick={() => setExpand(!expand)}
+          className={expand ? "expand" : ""}
+        >
+          {details}
+        </Details>
         <UserInteractionContainer>
           <LikeAndCourse>
             <img src={icons.ThumbsUpIcon} alt="thumbs up" />
             <img src={icons.ThumbsDownIcon} alt="thumbs down" />
-            <span>Pregunta juan.c23 en&nbsp;</span>
-            <strong>Matemáticas 6º</strong>
+            <span className={fromSameUser ? "from-user" : ""}>
+              Pregunta {userName} en&nbsp;
+            </span>
+            <strong>{course_name}</strong>
           </LikeAndCourse>
           <ShareAndFollow>
             <img src={icons.ShareIcon} alt="share" />

@@ -7,27 +7,11 @@ import {
 
 export const INITIAL_STATE: QuestionState = {
   fetching: false,
-  questions: [
-    {
-      username: "",
-      user_avatar: "",
-      user_id: "",
-      course_name: "",
-      course_id: "",
-      question: "",
-      details: "",
-      creation_date: "",
-    },
-  ],
+  questions: [],
   pagination: {
-    totalDocs: 0,
     limit: 15,
-    totalPages: 0,
     page: 1,
-    pagingCounter: 0,
-    hasPrevPage: false,
-    hasNextPage: false,
-    nextPage: 2,
+    hasNextPage: true,
   },
   error: undefined,
 };
@@ -48,12 +32,11 @@ const questionReducer: Reducer<QuestionState, QuestionActions> = (
         ...state,
         fetching: false,
         pagination: {
-          ...rest,
+          ...state.pagination,
+          page: rest.nextPage,
+          hasNextPage: rest.hasNextPage,
         },
-        questions: {
-          ...state.questions,
-          ...docs,
-        },
+        questions: [...state.questions, ...docs],
       };
     case QuestionActionTypes.FETCH_QUESTIONS_FAILURE:
       return {
@@ -61,6 +44,8 @@ const questionReducer: Reducer<QuestionState, QuestionActions> = (
         fetching: false,
         error: action.payload,
       };
+    case QuestionActionTypes.CLEAR_QUESTIONS_STATE:
+      return INITIAL_STATE;
     default:
       return state;
   }
