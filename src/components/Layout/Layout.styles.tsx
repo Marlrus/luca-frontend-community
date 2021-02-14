@@ -6,7 +6,7 @@ export const LayoutGrid = styled.div`
   display: grid;
   grid-template-columns: 288px auto;
 
-  @media screen and (max-width: ${size.tablet}) {
+  @media screen and (max-width: ${size.desktop}) {
     display: block;
   }
 `;

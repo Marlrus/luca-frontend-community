@@ -10,7 +10,7 @@ export const SidebarDesktop = styled.div`
   position: sticky;
   top: 0px;
 
-  @media screen and (max-width: ${size.tablet}) {
+  @media screen and (max-width: ${size.desktop}) {
     display: block;
   }
 `;

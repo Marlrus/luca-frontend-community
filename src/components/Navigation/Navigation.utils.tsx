@@ -1,4 +1,4 @@
-import { icons } from "../../StyleConstants";
+import { icons } from "../../IconsAndLogos";
 
 export const NavDesktopOptions = [
   {

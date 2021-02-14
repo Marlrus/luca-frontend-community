@@ -1,6 +1,6 @@
 import React from "react";
 import NavOption from "../NavOption/NavOption.component";
-import { logos } from "../../StyleConstants";
+import { logos } from "../../IconsAndLogos";
 import { NavDesktopOptions, NavMobileOptions } from "./Navigation.utils";
 import { useMediaQuery } from "react-responsive";
 
@@ -17,7 +17,7 @@ import {
 } from "./Navigation.styles";
 
 const Navigation: React.FC = () => {
-  const isTablet = useMediaQuery(maxWidthQueries.tablet);
+  const isTablet = useMediaQuery(maxWidthQueries.desktop);
   return (
     <>
       {!isTablet && (
@@ -38,7 +38,7 @@ const Navigation: React.FC = () => {
         <BottomNav>
           <NavIconsContainer>
             {NavMobileOptions.map((props) => (
-              <IconContainer>
+              <IconContainer key={props.icon}>
                 <NavOption {...props} />
               </IconContainer>
             ))}
