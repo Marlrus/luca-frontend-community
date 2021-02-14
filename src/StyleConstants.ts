@@ -29,3 +29,6 @@ export const medBlueBg = "#EDEEFF";
 // Icon
 export const disabledIconGrayLight = "#D9DAE3";
 export const disabledIconGray = "#9A9CB5";
+
+// Fonts
+export const gray1 = "#333333";

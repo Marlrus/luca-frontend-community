@@ -2,12 +2,15 @@ import styled from "styled-components";
 import { medGrayBg } from "../../StyleConstants";
 
 export const HeaderDesktopContainer = styled.div`
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   height: 80px;
   background-color: ${medGrayBg};
   width: calc(100% - 96px);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 32px;
+  column-gap: 24px;
   padding: 0 48px;
 `;
 

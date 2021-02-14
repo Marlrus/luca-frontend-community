@@ -19,6 +19,7 @@ import SearchIcon from "./static/icons/ic_search_32.svg";
 import TextAreaLinesIcon from "./static/icons/TextCornerLines.svg";
 import CloseXIcon from "./static/icons/ic_close_32.svg";
 import MoreArrowDownIcon from "./static/icons/ic_chevronmore_16.svg";
+import PencilIcon from "./static/icons/ic_pencil_32.svg";
 
 export const logos = {
   LucaLogo,
@@ -45,4 +46,5 @@ export const icons = {
   TextAreaLinesIcon,
   CloseXIcon,
   MoreArrowDownIcon,
+  PencilIcon,
 };
