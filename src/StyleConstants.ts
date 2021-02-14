@@ -14,7 +14,7 @@ export const size = {
   desktop: "1280px",
 };
 
-export const sizeQueries = {
+export const maxWidthQueries = {
   mobile: { query: `(max-width: ${size.mobile})` },
   tablet: { query: `(max-width: ${size.tablet})` },
   desktop: { query: `(max-width: ${size.desktop})` },
@@ -30,6 +30,7 @@ export const lucaPink = "#FC9CFE";
 
 // Background
 export const white = "#FFFFFF";
+export const black = "#000000";
 export const lightGrayBg = "#E5E5E5";
 export const medGrayBg = "#F1F2F8";
 export const medBlueBg = "#EDEEFF";

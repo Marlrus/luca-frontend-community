@@ -21,6 +21,7 @@ export const NavOptionContainer = styled.div`
 
   img {
     margin-right: 8px;
+    height: 32px;
   }
 
   span {
@@ -29,5 +30,17 @@ export const NavOptionContainer = styled.div`
     line-height: 24px;
 
     color: ${disabledIconGray};
+  }
+`;
+
+export const IconOnlyContainer = styled.div`
+  display: flex;
+  justify-conent: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+
+  img {
+    height: 32px;
   }
 `;

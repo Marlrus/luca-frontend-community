@@ -1,6 +1,6 @@
 import { icons } from "../../StyleConstants";
 
-export const NavOptionData = [
+export const NavDesktopOptions = [
   {
     label: "Inicio",
     icon: icons.InicioIcon,
@@ -25,5 +25,29 @@ export const NavOptionData = [
   {
     label: "Centro de ayuda",
     icon: icons.HelpIcon,
+  },
+];
+
+export const NavMobileOptions = [
+  {
+    icon: icons.InicioIcon,
+    iconOnly: true,
+  },
+  {
+    icon: icons.VideoIcon,
+    iconOnly: true,
+  },
+  {
+    icon: icons.QuizzesIcon,
+    iconOnly: true,
+  },
+  {
+    icon: icons.StudyPlanIcon,
+    iconOnly: true,
+  },
+  {
+    icon: icons.CommunityActive,
+    iconOnly: true,
+    active: true,
   },
 ];
