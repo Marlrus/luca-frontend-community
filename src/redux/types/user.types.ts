@@ -2,7 +2,6 @@ import {
   signInStartAction,
   signInSuccessAction,
   signInFailureAction,
-  fetchUserAction,
 } from "../actions/user.actions";
 
 export const UserActionTypes = {
