@@ -26,7 +26,11 @@ const Navigation: React.FC<RouteComponentProps> = ({ history }) => {
       {isDesktop && (
         <SidebarDesktop>
           <LogoContainer>
-            <img src={logos.LucaLogo} alt="Luca logo" />
+            <img
+              src={logos.LucaLogo}
+              alt="Luca logo"
+              onClick={() => history.push("/community")}
+            />
           </LogoContainer>
           <NavContainer>
             {NavDesktopOptions.map((props) => (

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router";
+import { connect, ConnectedProps } from "react-redux";
+import Axios from "axios";
 import ResponsiveContentGrid from "../ResponsiveContentGrid/ResponsiveContentGrid.component";
 import GameButton from "../GameButton/GameButton.component";
 import TextInput from "../TextInput/TextInput.component";
@@ -9,6 +11,8 @@ import { Formik, Form } from "formik";
 import { useMediaQuery } from "react-responsive";
 import * as Yup from "yup";
 
+import { State } from "../../redux/store.types";
+
 import { minWidthQueries } from "../../StyleConstants";
 import {
   FormContainer,
@@ -17,8 +21,13 @@ import {
   ButtonContainer,
 } from "./QuestionForm.styles";
 
-const QuestionForm: React.FC<RouteComponentProps> = ({ history }) => {
+const QuestionForm: React.FC<RouteComponentProps & ReduxProps> = ({
+  history,
+  user,
+}) => {
   const isDesktop = useMediaQuery(minWidthQueries.desktop);
+  const [submitting, setSubmitting] = useState<boolean>(false);
+
   return (
     <ResponsiveContentGrid>
       <Formik
@@ -34,7 +43,26 @@ const QuestionForm: React.FC<RouteComponentProps> = ({ history }) => {
           question: "",
           details: "",
         }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => {
+          const submitQuestion = async () => {
+            setSubmitting(true);
+            const { question, details } = values;
+            const body = {
+              user_id: user._id,
+              course_id: user.courses[0],
+              question,
+              details,
+            };
+            await Axios({
+              method: "post",
+              url: "http://localhost:5000/question",
+              data: body,
+            });
+            setSubmitting(false);
+            history.push("/community");
+          };
+          submitQuestion();
+        }}
       >
         {({ handleChange, values, handleBlur, errors, touched }) => (
           <FormContainer>
@@ -87,6 +115,7 @@ const QuestionForm: React.FC<RouteComponentProps> = ({ history }) => {
                   type="submit"
                   label="PUBLICAR"
                   fillDiv={isDesktop ? false : true}
+                  disabled={submitting}
                 />
               </ButtonContainer>
             </Form>
@@ -97,4 +126,12 @@ const QuestionForm: React.FC<RouteComponentProps> = ({ history }) => {
   );
 };
 
-export default withRouter(QuestionForm);
+const mapStateToProps = (state: State) => ({
+  user: state.user.user,
+});
+
+const connector = connect(mapStateToProps);
+
+type ReduxProps = ConnectedProps<typeof connector>;
+
+export default withRouter(connector(QuestionForm));

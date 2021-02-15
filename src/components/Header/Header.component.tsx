@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter, RouteComponentProps } from "react-router";
 import GameButton from "../GameButton/GameButton.component";
 import { useMediaQuery } from "react-responsive";
 
@@ -14,7 +15,7 @@ import {
   HeaderMobileContainer,
 } from "./Header.styles";
 
-const Header: React.FC = () => {
+const Header: React.FC<RouteComponentProps> = ({ history }) => {
   const isDesktop = useMediaQuery(minWidthQueries.desktop);
 
   if (isDesktop) {
@@ -50,7 +51,11 @@ const Header: React.FC = () => {
   }
   return (
     <HeaderMobileContainer>
-      <img src={logos.LucaLogo} alt="luca logo" />
+      <img
+        src={logos.LucaLogo}
+        alt="luca logo"
+        onClick={() => history.push("/community")}
+      />
       <UserContainer>
         <img src={icons.NotificationBellIcon} alt="notification" />
         <Avatar />
@@ -59,4 +64,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default withRouter(Header);
