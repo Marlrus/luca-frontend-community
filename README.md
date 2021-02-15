@@ -23,6 +23,12 @@ Without yarn, replace commands with npm install, npm run start.
 
 The app runs on localhost 3000
 
+## Page Flow
+
+The App component is the root route /, to simulate being in the /commuinty page the app re-routes you to that page. This page lists the questions using the pagination from the API and uses infinite scroll to fetch questions until there are no more left. The database is seeded with 300 questions. When entering the application, a user will be fetched from the DB to mock a login and allow the creation of new questions.
+
+The user can navigate using the buttons to the /community/question/new that will take him to a form where a question can be sumbitted. Both fields are required and have validation messages that can be tested. Once the question is published, the button is disabled in the background until the question is created. The user will then be re routed to the /community route and the questions will be re fetched and the users question will be seen there. If the question belongs to the user, you will see the username replaced with "tuya" and the color of the text will be slightly different. Since the DB was seeded at random, there could be more questions belonging to the user you are "logged in to"
+
 ## Folder Structure
 
 - src/ contains everything react related
