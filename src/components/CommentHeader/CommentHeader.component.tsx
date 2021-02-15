@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter, RouteComponentProps } from "react-router";
 import TabNavigation from "../TabNavigation/TabNavigation.component";
 import GameButton from "../GameButton/GameButton.component";
 import { useMediaQuery } from "react-responsive";
@@ -11,7 +12,10 @@ import {
   NavContainer,
 } from "./CommentHeader.styles";
 
-const CommentHeader: React.FC<React.ReactNode> = ({ children }) => {
+const CommentHeader: React.FC<React.ReactNode & RouteComponentProps> = ({
+  children,
+  history,
+}) => {
   const isDesktop = useMediaQuery(minWidthQueries.desktop);
   return (
     <CommentHeaderContainer>
@@ -21,7 +25,7 @@ const CommentHeader: React.FC<React.ReactNode> = ({ children }) => {
           <GameButton
             label="NUEVA PREGUNTA"
             buttonType="primary"
-            onClick={() => console.log("hai")}
+            onClick={() => history.push("/community/question/new")}
           />
         )}
       </TopContainer>
@@ -41,4 +45,4 @@ const CommentHeader: React.FC<React.ReactNode> = ({ children }) => {
   );
 };
 
-export default CommentHeader;
+export default withRouter(CommentHeader);

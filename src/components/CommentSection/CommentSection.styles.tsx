@@ -1,12 +1,5 @@
 import styled from "styled-components";
-import {
-  medGrayBg,
-  lucaBlue,
-  gray1,
-  white,
-  size,
-  gray4,
-} from "../../StyleConstants";
+import { medGrayBg, gray1, white, size, gray4 } from "../../StyleConstants";
 
 export const SectionContainer = styled.div`
   background-color: ${white};

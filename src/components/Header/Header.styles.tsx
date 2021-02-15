@@ -99,14 +99,17 @@ export const HeaderMobileContainer = styled.div`
   top: 0;
   height: 64px;
   background-color: ${white};
-  width: 100%;
+  width: calc(100% - 32px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 16px;
   max-width: 704px;
   margin: 0 auto;
-  border-bottom: 1px solid ${disabledIconGrayLight};
+
+  @media screen and (max-width: ${size.tablet}) {
+    border-bottom: 1px solid ${disabledIconGrayLight};
+  }
 
   img {
     height: 32px;

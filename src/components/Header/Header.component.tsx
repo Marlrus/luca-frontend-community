@@ -24,7 +24,7 @@ const Header: React.FC = () => {
           <div style={{ marginRight: "32px" }}>
             <GameButton
               label="Explorar"
-              buttonType="secondary"
+              buttonType="plain"
               iconSrc={icons.MoreArrowDownIcon}
             />
           </div>

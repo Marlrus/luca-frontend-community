@@ -37,7 +37,9 @@ export const disabledIconGrayLight = "#D9DAE3";
 export const disabledIconGray = "#9A9CB5";
 
 // Fonts
+export const placeholderGray = "#C0C0C0";
 export const gray1 = "#333333";
 export const gray2 = "#4F4F4F";
 export const gray3 = "#828282";
 export const gray4 = "#DBDBDB";
+export const gray5 = "#565656";

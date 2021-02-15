@@ -1,8 +1,12 @@
 import React from "react";
 
-import { PrimaryButton, SecondaryButton } from "./GameButton.style";
+import {
+  PrimaryButton,
+  PlainButton,
+  SecondaryButton,
+} from "./GameButton.style";
 
-type ButtonTypes = "primary" | "secondary";
+type ButtonTypes = "primary" | "secondary" | "plain";
 
 interface GameButtonProps {
   label: string;
@@ -20,6 +24,15 @@ const GameButton: React.FC<GameButtonProps> = ({
   iconSrc,
 }) => {
   const fillDivClassName = fillDiv ? "fill-div" : "";
+
+  if (buttonType === "plain") {
+    return (
+      <PlainButton onClick={onClick} className={fillDivClassName}>
+        {label}
+        {iconSrc && <img src={iconSrc} alt="label icon" />}
+      </PlainButton>
+    );
+  }
 
   if (buttonType === "secondary") {
     return (

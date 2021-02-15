@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { disabledIconGray, lucaBlue, medGrayBg } from "../../StyleConstants";
+import { disabledIconGray, medGrayBg } from "../../StyleConstants";
 
 export const NavOptionContainer = styled.div`
   display: flex;

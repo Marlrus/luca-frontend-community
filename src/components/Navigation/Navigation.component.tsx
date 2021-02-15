@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter, RouteComponentProps } from "react-router";
 import NavOption from "../NavOption/NavOption.component";
 import { logos, icons } from "../../IconsAndLogos";
 import { NavDesktopOptions, NavMobileOptions } from "./Navigation.utils";
@@ -18,7 +19,7 @@ import {
   ReferenceContainer,
 } from "./Navigation.styles";
 
-const Navigation: React.FC = () => {
+const Navigation: React.FC<RouteComponentProps> = ({ history }) => {
   const isDesktop = useMediaQuery(minWidthQueries.desktop);
   return (
     <>
@@ -39,9 +40,13 @@ const Navigation: React.FC = () => {
       {!isDesktop && (
         <BottomNav>
           <ReferenceContainer>
-            <NewQuestionPencil>
-              <img src={icons.PencilIcon} alt="new question pencil" />
-            </NewQuestionPencil>
+            {history.location.pathname !== "/community/question/new" && (
+              <NewQuestionPencil
+                onClick={() => history.push("/community/question/new")}
+              >
+                <img src={icons.PencilIcon} alt="new question pencil" />
+              </NewQuestionPencil>
+            )}
           </ReferenceContainer>
           <NavIconsContainer>
             {NavMobileOptions.map((props) => (
@@ -57,4 +62,4 @@ const Navigation: React.FC = () => {
   );
 };
 
-export default Navigation;
+export default withRouter(Navigation);
