@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { size, gray1 } from "../../StyleConstants";
+import { gray1 } from "../../StyleConstants";
 
 export const FormContainer = styled.div`
   margin-top: 38px;

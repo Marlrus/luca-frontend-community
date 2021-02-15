@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ButtonHTMLAttributes } from "react";
 
 import {
   PrimaryButton,
@@ -11,23 +11,18 @@ type ButtonTypes = "primary" | "secondary" | "plain";
 interface GameButtonProps {
   label: string;
   buttonType?: ButtonTypes;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   fillDiv?: boolean;
   iconSrc?: string;
 }
 
-const GameButton: React.FC<GameButtonProps> = ({
-  label,
-  buttonType = "primary",
-  onClick = () => {},
-  fillDiv = false,
-  iconSrc,
-}) => {
+const GameButton: React.FC<
+  GameButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
+> = ({ label, buttonType = "primary", fillDiv = false, iconSrc, ...props }) => {
   const fillDivClassName = fillDiv ? "fill-div" : "";
 
   if (buttonType === "plain") {
     return (
-      <PlainButton onClick={onClick} className={fillDivClassName}>
+      <PlainButton {...props} className={fillDivClassName}>
         {label}
         {iconSrc && <img src={iconSrc} alt="label icon" />}
       </PlainButton>
@@ -36,7 +31,7 @@ const GameButton: React.FC<GameButtonProps> = ({
 
   if (buttonType === "secondary") {
     return (
-      <SecondaryButton onClick={onClick} className={fillDivClassName}>
+      <SecondaryButton {...props} className={fillDivClassName}>
         {label}
         {iconSrc && <img src={iconSrc} alt="label icon" />}
       </SecondaryButton>
@@ -44,7 +39,7 @@ const GameButton: React.FC<GameButtonProps> = ({
   }
 
   return (
-    <PrimaryButton onClick={onClick} className={fillDivClassName}>
+    <PrimaryButton {...props} className={fillDivClassName}>
       {label}
       {iconSrc && <img src={iconSrc} alt="label icon" />}
     </PrimaryButton>

@@ -4,6 +4,7 @@ import {
   placeholderGray,
   gray5,
   disabledIconGrayLight,
+  lucaRed,
 } from "../../StyleConstants";
 
 export const LabelContainer = styled.div`
@@ -46,4 +47,15 @@ export const StyledTextArea = styled.textarea`
     line-height: 18px;
     color: ${placeholderGray};
   }
+`;
+
+export const ErrorMessage = styled.div`
+  margin-top: 4px;
+  margin-left: 4px;
+  font-family: "Poppins SemiBold";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 12px;
+  color: ${lucaRed};
 `;
